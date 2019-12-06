@@ -40,16 +40,15 @@ def testSVM():
 def supportVectorMachine():
     challengeResponsePairs = grabChallengeResponsePairs()
 
-    challenge, response = splitChallengesResponsePairs()
+    challenge, response = splitChallengesResponsePairs(challengeResponsePairs)
 
     trainSVM()
 
     testSVM()
 
+    print(challenge)
+    print(response)
+
 
 if __name__ == "__main__":
-
-    # print(challenges)
-    # print(responses)
-
     supportVectorMachine()
