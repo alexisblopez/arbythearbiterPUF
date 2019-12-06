@@ -12,6 +12,44 @@ def grabChallengeResponsePairs():
     return all_challenge_response_pairs
 
 
+def splitChallengesResponsePairs(all_challenge_response_pairs):
+    responses = []
+    binaryChallenges = []
+    decimalChallenges = []
+
+    for response in all_challenge_response_pairs:
+        responses.append(int(response[64]))
+
+    for challenge in all_challenge_response_pairs:
+        binaryChallenges.append(''.join(challenge[0:63]))
+
+    for challenge in binaryChallenges:
+        decimalChallenges.append(int(challenge, 2))
+
+    return decimalChallenges, responses
+
+
+def trainSVM():
+    print('train me')
+
+
+def testSVM():
+    print('test me')
+
+
+def supportVectorMachine():
+    challengeResponsePairs = grabChallengeResponsePairs()
+
+    challenge, response = splitChallengesResponsePairs()
+
+    trainSVM()
+
+    testSVM()
+
+
 if __name__ == "__main__":
-    # let's read the name of bench file
-    print(grabChallengeResponsePairs())
+
+    # print(challenges)
+    # print(responses)
+
+    supportVectorMachine()
