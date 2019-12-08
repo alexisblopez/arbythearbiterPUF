@@ -26,7 +26,7 @@ class SupportVectorMachine:
 
         all_data = []
 
-        for yi in self.data
+        for yi in self.data:
             for featureset in self.data[yi]:
                 for feature in featureset:
                     all_data.append(feature)
@@ -73,6 +73,14 @@ class SupportVectorMachine:
                                     found_option = False
 
                         for i in self.data:
+                            opt_dict[np.linalg.norm(w_t)] = [w_t,b]
+
+                        if w[0] < 0:
+                            optimized = True
+                            print('Optimized a step.')
+
+                        else:
+                            w = w - step
 
 
 
