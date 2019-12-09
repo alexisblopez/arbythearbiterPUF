@@ -14,14 +14,14 @@ def grabChallenges():
 # function that takes in 64 bits from csv and int number of internally generated bits (0-32)
 def internal_parity_generation(num_generated_bits):
     all_challenges = grabChallenges()
-    last_index_of_challenge = 63 - num_generated_bits
+    last_index_of_challenge = 63 - int(num_generated_bits)
     new_challenges = []
     for index in all_challenges:
         new_challenge = index[0:last_index_of_challenge]
         # generating all bits necessary
         extra_bits = ""
         bit = 0
-        while bit < num_generated_bits:
+        while bit < int(num_generated_bits):
             # call function that xor's challenge bits and returns new bit
             new_bit = generate_challenge_bit(bit, index)
             # add to list
@@ -29,7 +29,8 @@ def internal_parity_generation(num_generated_bits):
             bit += 1
         # adding to new list of challenges
         new_challenges.append(new_challenge)
-    with open('parity_w_5_bits.csv', 'w', newline='') as file:
+    file_name = "parity_w_" + num_generated_bits + "_bits.csv"
+    with open(file_name, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(new_challenges)
 
@@ -54,4 +55,5 @@ def generate_challenge_bit(bit, challenge):
 
 
 if __name__ == "__main__":
-    internal_parity_generation(5)
+    num = input("how many internally generated bits would you like to generate? ")
+    internal_parity_generation(num)
