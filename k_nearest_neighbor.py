@@ -1,11 +1,11 @@
 import numpy as np
-from sklearn import svm
+from sklearn import neighbors
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import pickle
 
 
-def supportVectorMachine():
+def kNearestNeighbor():
     df = pd.read_csv('challenge_response_pairs.csv')
     print(df)
 
@@ -21,7 +21,7 @@ def supportVectorMachine():
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-    clf = svm.SVC()
+    clf = neighbors.KNeighborsClassifier(n_neighbors=125)
 
     clf.fit(X_train, y_train)
     accuracy = clf.score(X_test, y_test)
@@ -37,5 +37,5 @@ def supportVectorMachine():
 
 
 if __name__ == "__main__":
-    supportVectorMachine()
+    kNearestNeighbor()
 
