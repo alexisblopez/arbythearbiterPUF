@@ -9,11 +9,7 @@ def supportVectorMachine():
     df = pd.read_csv('challenge_response_pairs.csv')
     print(df)
 
-    df.replace(-1, 0, inplace=True)
-    print(df)
-
     X = np.array(df.iloc[:, :-1])
-
     print(X)
 
     y = np.array(df.iloc[:, -1])
@@ -21,7 +17,7 @@ def supportVectorMachine():
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-    clf = svm.SVC()
+    clf = svm.SVC(kernel='linear', C=1, gamma=1)
 
     clf.fit(X_train, y_train)
     accuracy = clf.score(X_test, y_test)
