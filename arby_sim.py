@@ -37,6 +37,31 @@ def testSVM():
     print('test me')
 
 
+def getParityVectors(challenges):
+    import numpy
+    parityVectors = []
+
+    for row in challenges:
+        parityVector = []
+        del parityVector[:]
+
+        for count, element in enumerate(row):
+            j = count
+            parityBits = []
+            while j < len(row):
+                parityBits.append(1 - (2 * row[j]))
+                j = j + 1
+            parityBit = numpy.prod(parityBits)
+            del parityBits[:]
+            # print(len(parityBits))
+            parityVector.append(parityBit)
+        print(parityVector)
+
+        parityVectors.append(parityVector)
+
+    return parityVectors
+
+
 def supportVectorMachine():
     challengeResponsePairs = grabChallengeResponsePairs()
 
