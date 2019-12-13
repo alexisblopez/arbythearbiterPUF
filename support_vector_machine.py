@@ -3,18 +3,22 @@ from sklearn import svm
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import pickle
-
+from arby_sim import parity_gen, print_parity_to_csv
 
 def supportVectorMachine():
     df = pd.read_csv('challenge_response_pairs.csv')
+    print("original data frame: \n")
     print(df)
 
     df.replace(-1, 0, inplace=True)
+    print("binary data frame: \n")
     print(df)
 
     X = np.array(df.iloc[:, :-1])
 
-    print(X)
+
+    #print_parity_to_csv(data)
+
 
     y = np.array(df.iloc[:, -1])
     print(y)
