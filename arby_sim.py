@@ -1,3 +1,6 @@
+import csv
+
+
 def grabChallengeResponsePairs():
     import csv
 
@@ -75,5 +78,16 @@ def supportVectorMachine():
     print(response)
 
 
+def print_parity_to_csv(parityVectors):
+    print("writing parity vectors to csv file\n")
+    with open('parity_vectors.csv', 'w') as csv_File:
+        writer = csv.writer(csv_File)
+        for row in parityVectors:
+            writer.writerow(parityVectors[row])
+    print("done writing parity vector csv file\n")
+
+
 if __name__ == "__main__":
     supportVectorMachine()
+
+
